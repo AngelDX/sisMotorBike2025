@@ -2,13 +2,15 @@
 
 namespace App\Livewire;
 
+use App\Models\Motorbike;
 use Livewire\Component;
 
 class MotoList extends Component
 {
     public function render()
     {
-        return view('livewire.moto-list');
+        $motos=Motorbike::all();
+        return view('livewire.moto-list',compact('motos'));
     }
 
     public function create(){

@@ -8,32 +8,36 @@
                     <div>
                         <label for="username" class="block text-sm/6 font-medium text-gray-900">Marca</label>
                         <div class="mt-2 grid grid-cols-1">
-                            <select name="marca" class="col-start-1 row-start-1 w-full appearance-none rounded-md bg-white py-1.5 pr-8 pl-3 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
-                            <option>Seleccione una opción</option>
-                            <option>HONDA</option>
-                            <option>BAJAJ</option>
-                            <option>RONCO</option>
-                            <option>BERA</option>
-                            <option>BRUNO</option>
+                            <select wire:model="brand_id" class="col-start-1 row-start-1 w-full appearance-none rounded-md bg-white py-1.5 pr-8 pl-3 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
+                                <option>Seleccione una opción</option>
+                                @foreach ($marcas as $item)
+                                    <option value="{{$item->id}}">{{$item->name}}</option>
+                                @endforeach
                             </select>
                             <svg viewBox="0 0 16 16" fill="currentColor" data-slot="icon" aria-hidden="true" class="pointer-events-none col-start-1 row-start-1 mr-2 size-5 self-center justify-self-end text-gray-500 sm:size-4">
                             <path d="M4.22 6.22a.75.75 0 0 1 1.06 0L8 8.94l2.72-2.72a.75.75 0 1 1 1.06 1.06l-3.25 3.25a.75.75 0 0 1-1.06 0L4.22 7.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" fill-rule="evenodd" />
                             </svg>
                         </div>
+                        @error('brand_id')
+                            <span class="text-red-600 text-sm">*{{$message}}</span>
+                        @enderror
                     </div>
 
                     <div>
                         <label for="last-name" class="block text-sm/6 font-medium text-gray-900">Modelo</label>
                         <div class="mt-2">
-                            <input type="text" name="modelo" autocomplete="family-name" class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" />
+                            <input type="text" wire:model="model" autocomplete="family-name" class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" />
                         </div>
+                        @error('model')
+                            <span class="text-red-600 text-sm">*{{$message}}</span>
+                        @enderror
                     </div>
                 </div>
 
                 <div class="mt-3">
                     <label for="about" class="block text-sm/6 font-medium text-gray-900">Descripción</label>
                     <div class="mt-2">
-                        <textarea id="about" name="about" rows="3" class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"></textarea>
+                        <textarea wire:model="description" rows="3" class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"></textarea>
                     </div>
                 </div>
 
@@ -59,30 +63,43 @@
                     <div>
                         <label for="color" class="block text-sm/6 font-medium text-gray-900">Color</label>
                         <div class="mt-2 grid grid-cols-1">
-                            <select name="marca" class="col-start-1 row-start-1 w-full appearance-none rounded-md bg-white py-1.5 pr-8 pl-3 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
-                            <option>Seleccione una opción</option>
-                            <option>NEGRO</option>
-                            <option>ROJO</option>
-                            <option>BLANCO</option>
-                            <option>AZUL</option>
-                            <option>AMARILLO</option>
+                            <select wire:model="color" class="col-start-1 row-start-1 w-full appearance-none rounded-md bg-white py-1.5 pr-8 pl-3 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
+                                <option>Seleccione una opción</option>
+                                <option>NEGRO</option>
+                                <option>ROJO</option>
+                                <option>BLANCO</option>
+                                <option>AZUL</option>
+                                <option>AMARILLO</option>
                             </select>
                             <svg viewBox="0 0 16 16" fill="currentColor" data-slot="icon" aria-hidden="true" class="pointer-events-none col-start-1 row-start-1 mr-2 size-5 self-center justify-self-end text-gray-500 sm:size-4">
                             <path d="M4.22 6.22a.75.75 0 0 1 1.06 0L8 8.94l2.72-2.72a.75.75 0 1 1 1.06 1.06l-3.25 3.25a.75.75 0 0 1-1.06 0L4.22 7.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" fill-rule="evenodd" />
                             </svg>
                         </div>
+                        @error('color')
+                            <span class="text-red-600 text-sm">*{{$message}}</span>
+                        @enderror
                     </div>
                     <div>
                         <label for="estado" class="block text-sm/6 font-medium text-gray-900">Estado</label>
                         <div class="mt-2">
-                            <input id="region" type="text" name="region" autocomplete="address-level1" class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" />
+                           <select wire:model="state" class="col-start-1 row-start-1 w-full appearance-none rounded-md bg-white py-1.5 pr-8 pl-3 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
+                                <option>Seleccione una opción</option>
+                                <option>NUEVO</option>
+                                <option>USADO</option>
+                            </select>
                         </div>
+                        @error('state')
+                            <span class="text-red-600 text-sm">*{{$message}}</span>
+                        @enderror
                     </div>
                     <div>
                         <label for="precio" class="block text-sm/6 font-medium text-gray-900">Precio</label>
                         <div class="mt-2">
-                            <input id="postal-code" type="text" name="postal-code" autocomplete="postal-code" class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" />
+                            <input wire:model="price"  type="text" autocomplete="postal-code" class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" />
                         </div>
+                        @error('price')
+                            <span class="text-red-600 text-sm">*{{$message}}</span>
+                        @enderror
                     </div>
                 </div>
             </div>

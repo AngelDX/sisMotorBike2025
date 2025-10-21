@@ -7,7 +7,7 @@
             <flux:button wire:click="create()" variant="primary" icon="plus" class="cursor-pointer">Agregar</flux:button>
         </flux:modal.trigger>
     </div>
-    {{-- @include('livewire.supplier-create') --}}
+
     <div class="flex items-center justify-center">
         <table class="border-separate w-full border-spacing-y-2 text-sm">
             <thead class="bg-gray-500 text-gray-100">
@@ -22,44 +22,20 @@
                 </tr>
             </thead>
             <tbody>
-            {{-- @foreach ($proveedores as $item) --}}
+            @foreach ($motos as $item)
             <tr>
-                <td class="td-class">1</td>
-                <td class="td-class">HONDA</td>
-                <td class="td-class">CB 100</td>
-                <td class="td-class">AZUL</td>
-                <td class="td-class">NUEVO</td>
-                <td class="td-class">S/. 5,510</td>
+                <td class="td-class">{{$item->id}}</td>
+                <td class="td-class">{{$item->brand_id}}</td>
+                <td class="td-class">{{$item->model}}</td>
+                <td class="td-class">{{$item->color}}</td>
+                <td class="td-class">{{$item->state}}</td>
+                <td class="td-class">{{$item->price}}</td>
                 <td class="td-class">
                     <flux:button wire:click="edit()" icon="pencil-square" size="xs" class="cursor-pointer"></flux:button>
                     <flux:button wire:click="delete()"  variant="danger" icon="trash" size="xs" class="cursor-pointer"></flux:button>
                 </td>
             </tr>
-            <tr>
-                <td class="td-class">2</td>
-                <td class="td-class">HONDA</td>
-                <td class="td-class">CB 100</td>
-                <td class="td-class">AZUL</td>
-                <td class="td-class">NUEVO</td>
-                <td class="td-class">S/. 5,510</td>
-                <td class="td-class">
-                    <flux:button wire:click="edit()" icon="pencil-square" size="xs" class="cursor-pointer"></flux:button>
-                    <flux:button wire:click="delete()"  variant="danger" icon="trash" size="xs" class="cursor-pointer"></flux:button>
-                </td>
-            </tr>
-            <tr>
-                <td class="td-class">3</td>
-                <td class="td-class">HONDA</td>
-                <td class="td-class">CB 100</td>
-                <td class="td-class">AZUL</td>
-                <td class="td-class">NUEVO</td>
-                <td class="td-class">S/. 5,510</td>
-                <td class="td-class">
-                    <flux:button wire:click="edit()" icon="pencil-square" size="xs" class="cursor-pointer"></flux:button>
-                    <flux:button wire:click="delete()"  variant="danger" icon="trash" size="xs" class="cursor-pointer"></flux:button>
-                </td>
-            </tr>
-            {{-- @endforeach --}}
+            @endforeach
             </tbody>
         </table>
     </div>
